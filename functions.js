@@ -14,9 +14,12 @@ var mapOfWords = new Map();
 function pickWord() {
     var words = fs.readFileSync('5_letter_words.txt', 'utf-8')
     .split('\n');
-  var random = Math.floor(Math.random() * words.length);
-  wordCurrent = words[random];  
-  mapOfWords.clear();
+    guesses = 0;
+    currentGuesses.clear();
+    holderOfGuessResults.clear();
+    var random = Math.floor(Math.random() * words.length);
+    wordCurrent = words[random];  
+    mapOfWords.clear();
 
     for (var i = 0; i < 5; i++) {
         if (mapOfWords.has(wordCurrent[i])) {
@@ -65,8 +68,10 @@ express = require('express');
 app = express();
 
 app.use(express.json());
+const cors = require('cors');
+app.use(cors());
 
-app.get('/new', (req,res) => {
+app.get('/start', (req,res) => {
     word = pickWord();
     res.json({word});
 });
