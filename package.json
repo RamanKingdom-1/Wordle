@@ -4,7 +4,7 @@
   "description": "",
   "main": "wordle_functions.js",
   "scripts": {
-    "test": "node wordle_functions.js"
+    "start": "node wordle_functions.js"
   },
   "repository": {
     "type": "git",
